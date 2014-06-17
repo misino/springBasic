@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title>Register</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="alert alert-success" th:text="#{register.message.success}">
+        Váš účet bol zaregistrovaný. Registráciu dokončite kliknutím na odkaz, ktorý vám bol poslaný.
+    </div>
+</div>
+</body>
+</html>

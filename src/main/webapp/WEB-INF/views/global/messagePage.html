@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:bootstrap="https://github.com/misino"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title>#{register.title}</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="alert alert-success" th:text="${messageText}"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:bootstrap="https://github.com/misino"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title>#{register.title}</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form th:action="@{/auth/register}" th:object="${registerForm}" method="post"
+          class="col-sm-offset-2 col-sm-8 form-horizontal">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <h1 th:text="#{register.title.register}" class="col-sm-offset-2">Registration</h1>
+        <bootstrap:errorsummary/>
+        <bootstrap:input label="#{email}" field="email"/>
+        <bootstrap:input label="#{password}" field="password" type="password"/>
+        <bootstrap:input label="#{registerForm.repeatPassword}" field="repeatPassword" type="password"/>
+        <bootstrap:input label="#{register.label.register}" type="submit"/>
+    </form>
+</div>
+</body>
+</html>

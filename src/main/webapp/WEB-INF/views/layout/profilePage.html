@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">#{global.pageTitle}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/style/bootstrap/css/bootstrap.css"
+          th:href="@{/static/style/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/style/basicStyle.css"
+          th:href="@{/static/style/basicStyle.css}"/>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <img th:src="@{/static/images/defaultImage.png}" th:title="#{profile.photo.title}" class="thumbnail col-sm-12"/>
+                    <span th:text="${user.email}">Email</span>
+                </li>
+                <li class="list-group-item">
+                    <a th:href="@{/user/changePassword}" th:text="#{link.changePassword}">Change password</a>
+                </li>
+            </ul>
+        </div>
+        <div id="the-content" layout:fragment="content-inner" class="col-sm-9">
+            <!-- include here the content of the current page visited by the user -->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

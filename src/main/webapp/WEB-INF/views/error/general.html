@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title>#{error.page.title}</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1 th:text="#{error.page.title}">Error</h1>
+    <p th:text="${errorMessage}">The page you are looking for does not exist.</p>
+</div>
+</body>
+</html>

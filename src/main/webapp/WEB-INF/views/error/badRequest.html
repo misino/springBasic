@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title>#{error.page.badRequest.title}</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1 th:text="#{error.page.badRequest.title}">Bad request</h1>
+    <div class="alert alert-danger" th:text="#{error.unknown.message}"></div>
+</div>
+</body>
+</html>

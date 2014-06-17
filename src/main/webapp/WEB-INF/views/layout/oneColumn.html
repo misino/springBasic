@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">#{global.pageTitle}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/style/bootstrap/css/bootstrap.css"
+          th:href="@{/static/style/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/style/basicStyle.css"
+          th:href="@{/static/style/basicStyle.css}"/>
+</head>
+<body>
+
+<header class="navbar navbar-default navbar-fixed-top navbar-orange">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a th:href="@{/}">CityLife</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li sec:authorize="isAnonymous()"><a th:href="@{/auth/login}" th:text="#{login.title.login}">Login</a></li>
+                <li sec:authorize="isAnonymous()"><a th:href="@{/auth/register}" th:text="#{register.label.register}">Register</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin}" th:text="#{administration.title}">Administration</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/profile}" sec:authentication="name">Bob</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/auth/logout}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <button type="submit" th:text="#{login.title.logout}"
+                                class="btn btn-primary navbar-btn"></button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div id="the-content" layout:fragment="content" class="container">
+    <div th:if="${successMessage}" th:text="${successMessage}">
+        fdgfdgdfg
+    </div>
+    <!-- include here the content of the current page visited by the user -->
+</div>
+
+<footer class="footer-black" style="width:100%">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="title" th:text="#{socialnetworks.title}">Find us on social networks</div>
+            </div>
+            <div class="col-lg-4">
+                <ul>
+                    <li>
+                        <a href="site/tos" th:text="#{link.termsOfUse}">Terms of use</a>
+                    </li>
+                    <li>
+                        <a href="site/privacyPolicy" th:text="#{link.privacyPolicy}">Privacy policy</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4">
+                <ul>
+                    <li>
+                        <a href="site/about" th:text="#{link.about}">About</a>
+                    </li>
+                    <li>
+                        <a href="site/contact" th:text="#{link.contact}">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <p class="pull-right"><a href="#" th:text="#{link.backToTop}">Back to top</a></p>
+        </div>
+        <p class="row" style="text-align: center">Copyright &copy; 2014 by <a href="http://misino.eu">Misino</a>. All
+            Rights Reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

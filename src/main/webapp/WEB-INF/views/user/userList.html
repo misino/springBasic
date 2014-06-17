@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../static/style/bootstrap/css/bootstrap.css" th:href="@{/static/style/bootstrap/css/bootstrap.css}" />
+</head>
+<body>
+    <div class="container">
+        <div th:each="user: ${users}">
+            <span th:text="*{user.getEmail()}"></span>
+        </div>
+    </div>
+</body>
+</html>

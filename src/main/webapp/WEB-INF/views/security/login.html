@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:security="http://www.springframework.org/schema/security"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title>#{login.title.login}</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+    <form th:action="@{/auth/login}" th:object="${loginForm}" method="post" class="form-signin">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <h1 th:text="#{login.title.login}"></h1>
+        <div th:if="${param.error}" class="alert alert-danger" th:text="#{loginForm.error.badCredentials}"></div>
+        <input th:field="*{username}" id="username" type="text" class="form-control" th:placeholder="#{email}"/>
+        <input id="password" type="password" name="password" class="form-control" th:placeholder="#{password}"/>
+        <button type="submit" th:text="#{login.title.login}" class="btn btn-primary btn-block"></button>
+        <a th:href="@{/auth/forgottenPassword}" th:text="#{login.forgotPassword.label}"></a>
+    </form>
+</div>
+</body>
+</html>

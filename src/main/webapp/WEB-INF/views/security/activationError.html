@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:bootstrap="https://github.com/misino"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/oneColumn">
+<head>
+    <title>#{accountActivation.title.error}</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="alert alert-danger" th:text="#{accountActivation.message.error}">
+        Váš účet bol zaregistrovaný. Registráciu dokončite kliknutím na odkaz, ktorý vám bol poslaný.
+    </div>
+</div>
+</body>
+</html>

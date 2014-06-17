@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:remove="all">Template for HTML email with inline image</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="#{email.general.greeting}">
+    Good day,
+</p>
+<p th:text="#{email.registerSuccess.activate(${activationLink})}">
+</p>
+<p th:text="#{email.general.sincerely}"></p>
+
+</body>
+</html>
