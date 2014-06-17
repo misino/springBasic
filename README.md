@@ -13,7 +13,6 @@ It can be used as starting point for new applications. There are solved some iss
 - Database migrations (Flyway), database configuration
 
 ##Requirements
-==============
 - Java 7
 - application server (i.e. Apache Tomcat 8)
 
